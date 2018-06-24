@@ -65,7 +65,7 @@ document.onkeyup = function(event) {
                 hangman.textContent += letter.toUpperCase() + " ";
             });
 
-            //Display guesses made
+            // Display guesses made
             document.getElementById("guessesMadeHeader").textContent = "Guesses Made"
             var guessesMade = document.getElementById("guessesMade");
             guessesMade.textContent = "";
@@ -75,6 +75,10 @@ document.onkeyup = function(event) {
                     guessesMade.textContent += ", ";
                 }
             });
+
+            // Display guesses remaining
+            document.getElementById("guessesLeftHeader").textContent = "Guesses Left";
+            document.getElementById("guessesLeft").textContent = game.guessesRemaining;
         }
     }
 
@@ -124,6 +128,17 @@ document.onkeyup = function(event) {
         // User repeats a previous guess
         else{
 
+        }
+
+        // Check for win state
+        if(game.hangmanText.indexOf("_")===-1){
+            newGameNext = true;
+            win();
+            document.getElementById("guessesMadeHeader").textContent = "You Got It!"
+            document.getElementById("guessesMade").textContent = "It's " + game.pokemon.name + "!";
+            document.getElementById("guessesLeftHeader").textContent = "Controls";
+            document.getElementById("guessesLeft").textContent = "Type any letter to make a guess. Type any key to start a new game.";
+            displayAll();
         }
     }
 }
