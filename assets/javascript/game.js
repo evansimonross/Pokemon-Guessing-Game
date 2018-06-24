@@ -8,11 +8,20 @@ document.onkeyup = function (event) {
 
     // Creates a new game with a random Pokemon. The pokemonList variable can be found in the other .js file.
     function newGame() {
+        newGameNext = false;
         var pokemon = pokemonList[Math.floor(Math.random() * pokemonList.length)]
+
+        // Add the following line to test specific Pokemon. Good for ones with weird names. 
+        //pokemon = pokemonList[771];
         var name = cleanup(pokemon.name);
         var hangmanText = [];
         name.forEach(function (letter) {
-            hangmanText.push("_");
+            if(letter===" "){
+                hangmanText.push(" ");
+            }
+            else{
+                hangmanText.push("_");
+            }
         });
         return { pokemon, name, hangmanText, lettersGuessed: [], incorrectGuesses: [], guessesRemaining: 13 }
     }
@@ -73,7 +82,7 @@ document.onkeyup = function (event) {
 
             // Display the hangman text with spaces between letters and underscores for letters not yet guessed
             var hangman = document.getElementById("hangman");
-            hangman.textContent = "";
+            hangman.textContent = " ";
             game.hangmanText.forEach(function (letter) {
                 hangman.textContent += letter.toUpperCase() + " ";
             });
@@ -81,7 +90,7 @@ document.onkeyup = function (event) {
             // Display guesses made
             document.getElementById("guessesMadeHeader").textContent = "Guesses Made"
             var guessesMade = document.getElementById("guessesMade");
-            guessesMade.textContent = "";
+            guessesMade.textContent = " ";
             game.incorrectGuesses.forEach(function (letter, index, array) {
                 guessesMade.textContent += letter.toUpperCase();
                 if (index < array.length - 1) {
@@ -149,7 +158,7 @@ document.onkeyup = function (event) {
         }
 
         // Check for lose state
-        if (game.guessesRemaining === 0) {
+        else if (game.guessesRemaining === 0) {
             console.log("We have reached lose()");
             lose();
         }

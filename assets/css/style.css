@@ -8,22 +8,41 @@ body{
     /* Background image from https://www.wallpapervortex.com/wallpaper-13168_pokemon.html */
     url(../images/bkg.jpg);
     background-size: 100%;
+    color: yellow;
+    text-align: center;
+}
+
+.container{
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.row{
+    min-height: 100%;
+    overflow: hidden;
 }
 
 #game{
     background-color:rgb(246, 24, 24);
+    border: solid 3px royalblue;
+    height: 100%;
     padding: 0px;
+    margin: 20px;
 }
 
 h1{
     font-weight: 900;
     font-size: 4em;
-    color: yellow;
     -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: navy;
+    -webkit-text-stroke-color: royalblue;
     text-shadow: -5px 5px #666b;
     padding: 20px;
-    text-align: center;
+}
+
+h2{ 
+    font-weight: 900;
+    font-size: 3.5em;
+    padding: 20px;
 }
 
 #images{
@@ -48,5 +67,15 @@ h1{
 }
 
 .card{
-    margin: 10%;
+    margin: 20px;
+    border-color: royalblue;
+}
+
+.card-header{
+    background-color:rgb(246, 24, 24);
+}
+
+.card-body{
+    background-color:yellow;
+    color:rgb(246, 24, 24);
 }
