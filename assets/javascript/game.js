@@ -57,28 +57,52 @@ document.onkeyup = function(event) {
         }
         else{
             pokemonImg.style.webkitFilter="brightness(-50%)";
+
+            // Display the hangman text with spaces between letters and underscores for letters not yet guessed
+            var hangman = document.getElementById("hangman");
+            hangman.textContent = "";
+            game.hangmanText.forEach(function(letter){
+                hangman.textContent += letter.toUpperCase() + " ";
+            });
+
+            //Display guesses made
+            document.getElementById("guessesMadeHeader").textContent = "Guesses Made"
+            var guessesMade = document.getElementById("guessesMade");
+            guessesMade.textContent = "";
+            game.incorrectGuesses.forEach(function(letter, index, array){
+                guessesMade.textContent += letter.toUpperCase();
+                if(index<array.length-1){
+                    guessesMade.textContent += ", ";
+                }
+            });
         }
-        // Display the hangman text with spaces between letters and underscores for letters not yet guessed
-        var hangman = document.getElementById("hangman");
-        hangman.textContent = "";
-        game.hangmanText.forEach(function(letter){
-            hangman.textContent = hangman.textContent + letter.toUpperCase() + " ";
-        });
     }
 
+    // Saves user input as a variable
     var userGuess = event.key;
+
+    // Create a new game
     if(newGameNext){
         game = newGame();
         newGameNext = false;
         displayAll();
     }
+
+    // Continues an ongoing game
     else{
+        // User makes a new guess
         if(game.lettersGuessed.indexOf(userGuess)===-1){
+
+            // User guess is not an alphabetic character
             if(letters.indexOf(userGuess)===-1){
             }
+
+            // User guess is an alphabetic character, adds the letter to guess list and decrements remaining guesses.
             else{
                 game.lettersGuessed.push(userGuess);
                 game.guessesRemaining--;
+
+                // If the guess is in the Pokemon's name
                 if(game.name.indexOf(userGuess)>=0){
                     game.name.forEach(function(letter, index){
                         if(letter===userGuess){
@@ -86,12 +110,18 @@ document.onkeyup = function(event) {
                         }
                     });
                 }
+
+                // If the guess is not in the Pokemon's name
                 else{
                     game.incorrectGuesses.push(userGuess);
                 }
+
+                // Refresh the display
                 displayAll();
             }
         }
+
+        // User repeats a previous guess
         else{
 
         }
