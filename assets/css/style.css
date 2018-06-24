@@ -37,11 +37,11 @@ h1{
 }
 
 #pokemon{
-    width: 40%;
+    width: 45%;
     position: absolute;
     left: 0;
     top: 0;
-    right: 40%;
+    right: 45%;
     bottom: 0;
     display: block;
     margin: auto; 
