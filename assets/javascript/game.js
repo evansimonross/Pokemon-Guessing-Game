@@ -1,15 +1,38 @@
 var newGameNext = true;
+var gameMode = 0; //0 for casual, 1 for challenge, 2 for extreme
 var wins = 0;
 var losses = 0;
 var game = {};
 const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+// document.getElementById("testcard").addEventListener("click", function(){
+//     alert("It worked");
+// });
+
+function setGameMode(mode){
+    gameMode = mode;
+}
 
 document.onkeyup = function (event) {
 
     // Creates a new game with a random Pokemon. The pokemonList variable can be found in the other .js file.
     function newGame() {
         newGameNext = false;
-        var pokemon = pokemonList[Math.floor(Math.random() * pokemonList.length)]
+
+        var pokemon = {};
+        var guessesRemaining;
+        if(gameMode === 2){
+            pokemon = pokemonList[Math.floor(Math.random() * 807)];
+            guessesRemaining = 10;
+        }
+        else if(gameMode === 1) {
+            pokemon = pokemonList[Math.floor(Math.random() * 386)];
+            guessesRemaining = 13;
+        }
+        else {
+            pokemon = pokemonList[Math.floor(Math.random() * 151)];
+            guessesRemaining = 16;
+        }
 
         // Add the following line to test specific Pokemon. Good for ones with weird names. 
         //pokemon = pokemonList[771];
@@ -23,7 +46,7 @@ document.onkeyup = function (event) {
                 hangmanText.push("_");
             }
         });
-        return { pokemon, name, hangmanText, lettersGuessed: [], incorrectGuesses: [], guessesRemaining: 13 }
+        return { pokemon, name, hangmanText, lettersGuessed: [], incorrectGuesses: [], guessesRemaining }
     }
 
     // Increments the win counter.
@@ -78,11 +101,11 @@ document.onkeyup = function (event) {
             pokemonImg.style.webkitFilter = "brightness(100%)";
         }
         else {
-            pokemonImg.style.webkitFilter = "brightness(-50%)";
+            pokemonImg.style.webkitFilter = "brightness(0%)";
 
             // Display the hangman text with spaces between letters and underscores for letters not yet guessed
             var hangman = document.getElementById("hangman");
-            hangman.textContent = " ";
+            hangman.textContent = "";
             game.hangmanText.forEach(function (letter) {
                 hangman.textContent += letter.toUpperCase() + " ";
             });
@@ -90,13 +113,16 @@ document.onkeyup = function (event) {
             // Display guesses made
             document.getElementById("guessesMadeHeader").textContent = "Guesses Made"
             var guessesMade = document.getElementById("guessesMade");
-            guessesMade.textContent = " ";
+            guessesMade.textContent = "";
             game.incorrectGuesses.forEach(function (letter, index, array) {
                 guessesMade.textContent += letter.toUpperCase();
                 if (index < array.length - 1) {
                     guessesMade.textContent += ", ";
                 }
             });
+            if (game.incorrectGuesses.length==0){
+                guessesMade.textContent = "No incorrect guesses so far";
+            }
 
             // Display guesses remaining
             document.getElementById("guessesLeftHeader").textContent = "Guesses Left";

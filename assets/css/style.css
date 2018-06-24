@@ -28,6 +28,7 @@ body{
     height: 100%;
     padding: 0px;
     margin: 20px;
+    border-radius: 25px;
 }
 
 h1{
@@ -68,14 +69,15 @@ h2{
 
 .card{
     margin: 20px;
-    border-color: royalblue;
+    border: solid 3px royalblue;
+    border-radius: 25px;
+    background-color:  rgb(246, 24, 24);
 }
 
-.card-header{
-    background-color:rgb(246, 24, 24);
+.btn-link{
+    color: yellow;
 }
 
-.card-body{
-    background-color:yellow;
-    color:rgb(246, 24, 24);
+.btn-link:hover{
+    color: yellow;
 }
