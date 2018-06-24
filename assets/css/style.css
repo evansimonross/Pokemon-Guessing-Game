@@ -1,0 +1,52 @@
+body{
+    background: 
+    linear-gradient(
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.5)
+    ),
+
+    /* Background image from https://www.wallpapervortex.com/wallpaper-13168_pokemon.html */
+    url(../images/bkg.jpg);
+    background-size: 100%;
+}
+
+#game{
+    background-color:rgb(246, 24, 24);
+    padding: 0px;
+}
+
+h1{
+    font-weight: 900;
+    font-size: 3em;
+    color: yellow;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: navy;
+    text-shadow: -5px 5px #666b;
+    padding: 20px;
+    text-align: center;
+}
+
+#images{
+
+    position: relative;
+    width:100%;
+    padding-top: 56.25%;
+    background: url(../images/who.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#pokemon{
+    width: 40%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 40%;
+    bottom: 0;
+    display: block;
+    margin: auto; 
+}
+
+.card{
+    margin: 10%;
+}
