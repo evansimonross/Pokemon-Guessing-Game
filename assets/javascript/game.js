@@ -54,7 +54,7 @@ document.onkeyup = function (event) {
         document.getElementById("guessesMadeHeader").textContent = "You Got It!"
         document.getElementById("guessesMade").textContent = "It's " + game.pokemon.name + "!";
         document.getElementById("guessesLeftHeader").textContent = "Controls";
-        document.getElementById("guessesLeft").textContent = "Type any letter to make a guess. Type any key to start a new game.";
+        document.getElementById("guessesLeft").textContent = "Type any key to start a new game.";
         displayAll();
 
     }
@@ -67,7 +67,7 @@ document.onkeyup = function (event) {
         document.getElementById("guessesMadeHeader").textContent = "Too bad!"
         document.getElementById("guessesMade").textContent = "It was " + game.pokemon.name + "!";
         document.getElementById("guessesLeftHeader").textContent = "Controls";
-        document.getElementById("guessesLeft").textContent = "Type any letter to make a guess. Type any key to start a new game.";
+        document.getElementById("guessesLeft").textContent = "Type any key to start a new game.";
         displayAll();
     }
 
