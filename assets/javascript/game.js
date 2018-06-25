@@ -20,11 +20,11 @@ document.onkeyup = function (event) {
         var guessesRemaining;
         if(gameMode === 2){
             pokemon = pokemonList[Math.floor(Math.random() * 807)];
-            guessesRemaining = 10;
+            guessesRemaining = 12;
         }
         else if(gameMode === 1) {
             pokemon = pokemonList[Math.floor(Math.random() * 386)];
-            guessesRemaining = 13;
+            guessesRemaining = 14;
         }
         else {
             pokemon = pokemonList[Math.floor(Math.random() * 151)];
