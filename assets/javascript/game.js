@@ -128,7 +128,7 @@ document.onkeyup = function (event) {
     }
 
     // Saves user input as a variable
-    var userGuess = event.key;
+    var userGuess = event.key.toLowerCase();
 
     // Create a new game
     if (newGameNext) {
