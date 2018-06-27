@@ -81,6 +81,7 @@ function lose() {
     displayAll();
 }
 
+// Sets the CSS style to the Pokemon theme.
 function pokemonCSS(){
     $('body').css('background','linear-gradient(rgba(255, 255, 255, 0.5), #ffffff80),url(assets/images/bkg.jpg)');
     $('body').css('background-size', '100%');
@@ -104,7 +105,10 @@ function pokemonCSS(){
     $('.btn-link, .btn-link:visited, .btn-link:hover, .btn-link:active, .btn-link:focus').css('color','yellow');
 }
 
+// Sets the CSS style to the Neopets theme.
 function neopetsCSS(){
+
+    // Background from https://www.myfreewallpapers.net/cartoons/pages/neopets.shtml
     $('body').css('background','linear-gradient(rgba(255, 255, 255, 0.5), #ffffff80),url(assets/images/neo_bkg.jpg)');
     $('body').css('background-size', '100%');
     $('body').css('color', 'black');
@@ -126,6 +130,7 @@ function neopetsCSS(){
 
     $('.btn-link, .btn-link:visited, .btn-link:hover, .btn-link:active, .btn-link:focus').css('color','black');
 
+    $('#mystery').text("Neopets");
 }
 
 // Cleans up the Pokemon's name -- some Pokemon names include unusual characters.
@@ -184,6 +189,7 @@ function displayAll() {
     }
 }
 
+//Behavior when user presses a key
 document.onkeyup = function (event) {
 
     // Saves user input as a variable
@@ -238,6 +244,9 @@ document.onkeyup = function (event) {
         // Check for win state
         if (game.hangmanText.indexOf("_") === -1) {
             win();
+            if(wins==20){
+                $('#accordion').append($('<div class="card"><div class="card-header" id="headingFour"><h5 class="mb-0"><button id="mystery" onclick="setGameMode(3)" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">???????</button></h5></div><div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion"><div class="card-body">Replaces Pokémon with Neopets.</div></div>'));
+            }
         }
 
         // Check for lose state
