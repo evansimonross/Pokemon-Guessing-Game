@@ -1,5 +1,5 @@
 var newGameNext = true;
-var gameMode = 0; //0 for casual, 1 for challenge, 2 for extreme
+var gameMode = 0; //0 for casual, 1 for challenge, 2 for extreme, 3 for mystery
 var wins = 0;
 var losses = 0;
 var game = {};
@@ -18,22 +18,31 @@ document.onkeyup = function (event) {
 
         var pokemon = {};
         var guessesRemaining;
-        if(gameMode === 2){
+        if(gameMode === 3){
+            pokemon = neopetList[Math.floor(Math.random()*neopetList.length)];
+            guessesRemaining = 10;
+            neopetsCSS();
+        }
+        else if(gameMode === 2){
             pokemon = pokemonList[Math.floor(Math.random() * 807)];
             guessesRemaining = 12;
+            pokemonCSS();
         }
         else if(gameMode === 1) {
             pokemon = pokemonList[Math.floor(Math.random() * 386)];
             guessesRemaining = 14;
+            pokemonCSS();
         }
         else {
             pokemon = pokemonList[Math.floor(Math.random() * 151)];
             guessesRemaining = 16;
+            pokemonCSS();
         }
 
         // Add the following line to test specific Pokemon. Good for ones with weird names. 
         //pokemon = pokemonList[771];
         var name = cleanup(pokemon.name);
+        //console.log(name);
         var hangmanText = [];
         name.forEach(function (letter) {
             if(letter===" "){
@@ -69,6 +78,53 @@ document.onkeyup = function (event) {
         document.getElementById("guessesLeftHeader").textContent = "Controls";
         document.getElementById("guessesLeft").textContent = "Type any key to start a new game.";
         displayAll();
+    }
+
+    function pokemonCSS(){
+        $('body').css('background','linear-gradient(rgba(255, 255, 255, 0.5), #ffffff80),url(assets/images/bkg.jpg)');
+        $('body').css('background-size', '100%');
+        $('body').css('color', 'yellow');
+
+        $('#game').css('background-color','rgb(246, 24, 24)');
+        $('#game').css('border','solid 3px royalblue');
+
+        $('h1').css('-webkit-text-stroke-color', 'royalblue');
+        $('h1').text("Who's That Pokémon?");
+
+        $('#pokemon').css('width','45%');
+        $('#pokemon').css('right','45%');
+        $('#pokemon').css('transform','translateX(0%)');
+
+        $('#neopets').css('display','none');
+
+        $('.card').css('background-color','rgb(246, 24, 24)');
+        $('.card').css('border','solid 3px royalblue');
+
+        $('.btn-link, .btn-link:visited, .btn-link:hover, .btn-link:active, .btn-link:focus').css('color','yellow');
+    }
+
+    function neopetsCSS(){
+        $('body').css('background','linear-gradient(rgba(255, 255, 255, 0.5), #ffffff80),url(assets/images/neo_bkg.jpg)');
+        $('body').css('background-size', '100%');
+        $('body').css('color', 'black');
+
+        $('#game').css('background-color','rgb(255, 208, 38)');
+        $('#game').css('border','solid 3px black');
+
+        $('h1').css('-webkit-text-stroke-color', 'white');
+        $('h1').text("Who's That Neopet?");
+
+        $('#pokemon').css('width','70%');
+        $('#pokemon').css('right','65%');
+        $('#pokemon').css('transform','translateX(-10%)');
+
+        $('#neopets').css('display','block');
+
+        $('.card').css('background-color','rgb(255, 208, 38)');
+        $('.card').css('border','solid 3px black');
+
+        $('.btn-link, .btn-link:visited, .btn-link:hover, .btn-link:active, .btn-link:focus').css('color','black');
+
     }
 
     // Cleans up the Pokemon's name -- some Pokemon names include unusual characters.
