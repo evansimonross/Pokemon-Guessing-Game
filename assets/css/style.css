@@ -85,10 +85,19 @@ h2{
     border: solid 3px royalblue;
     border-radius: 25px;
     background-color:  rgb(246, 24, 24);
+    overflow: hidden;
+}
+
+.card-text{
+    word-wrap: break-word;
 }
 
 .card-header{
     font-weight: 600;
+}
+
+button{
+    overflow-wrap:break-word;
 }
 
 .btn-link, .btn-link:visited, .btn-link:hover, .btn-link:active, .btn-link:focus{
