@@ -1,6 +1,11 @@
 # Pokemon-Guessing-Game
 A hangman style game with a "Who's that Pokémon?" theme.
 
+## How to Play
+[Click here to play the game](https://evansimonross.github.io/Pokemon-Guessing-Game/).
+
+Type "enter" to start a new game. Type any letter of the alphabet to make a guess. You can change difficulty by clicking on the buttons to the right of the screen. See if you can find the secret mode!
+
 ## Project History
 This project was a homework assignment for the Columbia Full Stack Web Development Coding Bootcamp, meant to be our first foray into utilizing JavaScript. The project specs were to make a hangman-style game of a specific theme. After choosing Pokémon as my theme, I knew I wanted to the do the "Who's that Pokémon?" thing from the anime, in which only the Pokémon's silhouette was visible. This was surprisingly easy to replicate in CSS.
 
